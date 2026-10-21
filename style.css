@@ -1,0 +1,835 @@
+
+/* ==================================================
+   1. PENGATURAN DASAR WEBSITE
+   Mengatur warna, font, dan ukuran dasar.
+================================================== */
+
+:root {
+    /* Warna utama website */
+    --warna-utama: #245c46;
+    --warna-utama-hover: #194533;
+
+    /* Warna latar dan kartu */
+    --warna-latar: #f7f8f5;
+    --warna-kartu: #ffffff;
+
+    /* Warna teks */
+    --warna-teks: #24332b;
+    --warna-teks-sekunder: #69766e;
+
+    /* Warna garis dan status */
+    --warna-garis: #e2e8e3;
+    --warna-sukses: #237a45;
+    --warna-habis: #b42318;
+
+    /* Ukuran sudut dan bayangan */
+    --radius-kartu: 16px;
+    --bayangan-kartu: 0 4px 18px rgba(30, 55, 40, 0.06);
+}
+
+/* Mengatur perhitungan ukuran semua elemen */
+* {
+    box-sizing: border-box;
+}
+
+/* Mengatur perilaku gulir halaman */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mengatur tampilan utama halaman */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--warna-teks);
+    background-color: var(--warna-latar);
+}
+
+/* Mengatur ukuran gambar agar tidak melampaui wadah */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Membuat tombol dan input menggunakan font yang sama */
+button,
+input {
+    font: inherit;
+}
+
+/* Membuat tombol lebih nyaman digunakan */
+button {
+    cursor: pointer;
+}
+
+/* Menghilangkan garis bawah tautan */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Wadah utama agar konten berada di tengah */
+.container {
+    width: min(100% - 40px, 1200px);
+    margin-inline: auto;
+}
+
+/* Menyembunyikan label secara visual,
+   tetapi tetap dapat dibaca oleh pembaca layar */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* ==================================================
+   2. HEADER WEBSITE
+   Bagian paling atas yang menampilkan identitas kafe.
+================================================== */
+
+.header {
+    background-color: var(--warna-kartu);
+    border-bottom: 1px solid var(--warna-garis);
+}
+
+/* Mengatur posisi isi header */
+.header-content {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Mengatur logo dan nama website */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ikon makanan pada identitas website */
+.brand-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    background-color: #eaf3ed;
+    border-radius: 14px;
+    font-size: 25px;
+}
+
+/* Mengatur nama kafe dan tulisan kecil */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+}
+
+.brand-text strong {
+    font-size: 20px;
+    color: var(--warna-utama);
+}
+
+.brand-text small {
+    margin-top: 3px;
+    font-size: 12px;
+    color: var(--warna-teks-sekunder);
+}
+
+/* Label di sisi kanan header */
+.header-label {
+    font-size: 14px;
+    color: var(--warna-teks-sekunder);
+}
+
+
+/* ==================================================
+   3. BAGIAN HERO
+   Menampilkan judul sambutan kepada pelanggan.
+================================================== */
+
+.hero {
+    padding: 64px 0;
+    background: linear-gradient(
+        135deg,
+        #eaf3ed 0%,
+        #f7f8f5 100%
+    );
+}
+
+.hero-content {
+    max-width: 850px;
+    text-align: center;
+}
+
+/* Tulisan kecil di atas judul */
+.hero-label,
+.section-label {
+    margin: 0 0 10px;
+    color: var(--warna-utama);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Judul utama website */
+.hero h1 {
+    margin: 0;
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* Deskripsi di bawah judul */
+.hero-description {
+    max-width: 620px;
+    margin: 18px auto 0;
+    color: var(--warna-teks-sekunder);
+    font-size: 16px;
+}
+
+
+/* ==================================================
+   4. BAGIAN DAFTAR MENU
+   Mengatur jarak dan judul bagian menu.
+================================================== */
+
+.menu-section {
+    padding: 56px 0 72px;
+}
+
+/* Judul dan deskripsi bagian menu */
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 26px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+.section-description {
+    margin: 8px 0 0;
+    color: var(--warna-teks-sekunder);
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   5. KOTAK PENCARIAN
+   Mengatur input pencarian makanan dan minuman.
+================================================== */
+
+.search-wrapper {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+/* Ikon pencarian berada di dalam kotak input */
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 17px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 17px;
+}
+
+/* Tampilan kolom pencarian */
+.search-wrapper input {
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 18px 14px 48px;
+    color: var(--warna-teks);
+    background-color: var(--warna-kartu);
+    border: 1px solid var(--warna-garis);
+    border-radius: 12px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Warna petunjuk di dalam kolom pencarian */
+.search-wrapper input::placeholder {
+    color: #929d95;
+}
+
+/* Efek saat kolom pencarian dipilih */
+.search-wrapper input:focus {
+    border-color: var(--warna-utama);
+    box-shadow: 0 0 0 3px rgba(36, 92, 70, 0.12);
+}
+
+
+/* ==================================================
+   6. TOMBOL KATEGORI
+   Mengatur filter Semua Menu, Makanan, dan lainnya.
+================================================== */
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+/* Bentuk dasar tombol kategori */
+.category-button {
+    padding: 10px 18px;
+    color: var(--warna-teks-sekunder);
+    background-color: var(--warna-kartu);
+    border: 1px solid var(--warna-garis);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+/* Efek ketika mouse berada di atas tombol */
+.category-button:hover {
+    color: var(--warna-utama);
+    border-color: var(--warna-utama);
+}
+
+/* Tampilan kategori yang sedang dipilih */
+.category-button.active {
+    color: #ffffff;
+    background-color: var(--warna-utama);
+    border-color: var(--warna-utama);
+}
+
+/* Tampilan fokus untuk navigasi keyboard */
+.category-button:focus-visible,
+.reset-button:focus-visible {
+    outline: 3px solid rgba(36, 92, 70, 0.3);
+    outline-offset: 3px;
+}
+
+
+/* ==================================================
+   7. INFORMASI JUMLAH MENU
+   Menampilkan jumlah hasil yang ditemukan.
+================================================== */
+
+.menu-information {
+    margin-bottom: 16px;
+}
+
+.menu-information p {
+    margin: 0;
+    color: var(--warna-teks-sekunder);
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   8. GRID KARTU MENU
+   Jumlah kolom menyesuaikan ruang layar.
+================================================== */
+
+.menu-grid {
+    display: grid;
+
+    /* Kolom otomatis menyesuaikan ukuran layar */
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 245px), 1fr)
+    );
+
+    gap: 22px;
+    align-items: stretch;
+}
+
+/* Kartu menu */
+.menu-card {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--warna-kartu);
+    border: 1px solid var(--warna-garis);
+    border-radius: var(--radius-kartu);
+    box-shadow: var(--bayangan-kartu);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Efek saat kartu diarahkan mouse */
+.menu-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 24px rgba(30, 55, 40, 0.1);
+}
+
+/* Wadah foto menu */
+.menu-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #edf1ed;
+    aspect-ratio: 4 / 3;
+}
+
+/* Foto makanan */
+.menu-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Isi informasi menu */
+.menu-card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px;
+}
+
+/* Nama menu */
+.menu-name {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Deskripsi makanan */
+.menu-description {
+    margin: 9px 0 16px;
+    color: var(--warna-teks-sekunder);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Baris harga dan status */
+.menu-card-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+}
+
+/* Harga makanan */
+.menu-price {
+    margin: 0;
+    color: var(--warna-utama);
+    font-size: 19px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+/* Label ketersediaan makanan */
+.menu-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Status makanan tersedia */
+.menu-status.available {
+    color: var(--warna-sukses);
+    background-color: #e8f6ec;
+}
+
+/* Status makanan habis */
+.menu-status.unavailable {
+    color: var(--warna-habis);
+    background-color: #fdeceb;
+}
+
+/* Penanda kategori pada kartu jika digunakan JavaScript */
+.menu-category {
+    margin: 0 0 8px;
+    color: var(--warna-teks-sekunder);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+
+/* ==================================================
+   9. TAMPILAN SAAT MENU TIDAK DITEMUKAN
+================================================== */
+
+.empty-state {
+    padding: 48px 20px;
+    text-align: center;
+    background-color: var(--warna-kartu);
+    border: 1px dashed var(--warna-garis);
+    border-radius: var(--radius-kartu);
+}
+
+/* Ikon pada pesan kosong */
+.empty-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 42px;
+}
+
+/* Judul pesan kosong */
+.empty-state h3 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+/* Deskripsi pesan kosong */
+.empty-state p {
+    margin: 0;
+    color: var(--warna-teks-sekunder);
+    font-size: 14px;
+}
+
+/* Tombol untuk mengembalikan seluruh menu */
+.reset-button {
+    margin-top: 20px;
+    padding: 12px 18px;
+    color: #ffffff;
+    background-color: var(--warna-utama);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.reset-button:hover {
+    background-color: var(--warna-utama-hover);
+}
+
+/* Memastikan elemen hidden benar-benar tidak tampil */
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==================================================
+   10. BAGIAN INFORMASI CARA MEMESAN
+================================================== */
+
+.order-information {
+    padding: 32px 0;
+    background-color: #eaf3ed;
+}
+
+/* Mengatur ikon dan teks petunjuk */
+.order-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Ikon petunjuk pemesanan */
+.order-icon {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background-color: #ffffff;
+    border-radius: 16px;
+    font-size: 27px;
+}
+
+/* Judul petunjuk */
+.order-content h2 {
+    margin: 0 0 6px;
+    font-size: 21px;
+}
+
+/* Deskripsi petunjuk */
+.order-content p {
+    margin: 0;
+    color: var(--warna-teks-sekunder);
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   11. FOOTER WEBSITE
+   Bagian paling bawah halaman.
+================================================== */
+
+.footer {
+    padding: 24px 0;
+    background-color: #ffffff;
+    border-top: 1px solid var(--warna-garis);
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Teks hak cipta */
+.footer-content p {
+    margin: 0;
+    color: var(--warna-teks-sekunder);
+    font-size: 13px;
+}
+
+.footer-note {
+    text-align: right;
+}
+
+
+/* ==================================================
+   12. TAMPILAN RESPONSIF UNTUK TABLET
+   Aturan aktif pada layar 768px atau lebih kecil.
+================================================== */
+
+@media (max-width: 768px) {
+
+    /* Memperkecil jarak tepi halaman */
+    .container {
+        width: min(100% - 32px, 1200px);
+    }
+
+    /* Memperkecil header */
+    .header-content {
+        min-height: 72px;
+    }
+
+    .header-label {
+        max-width: 140px;
+        text-align: right;
+        font-size: 12px;
+    }
+
+    /* Mengurangi jarak pada bagian hero */
+    .hero {
+        padding: 48px 0;
+    }
+
+    /* Mengurangi jarak bagian menu */
+    .menu-section {
+        padding: 42px 0 52px;
+    }
+
+    .section-heading h2 {
+        font-size: 26px;
+    }
+
+    /* Memperkecil jarak antarkartu */
+    .menu-grid {
+        gap: 16px;
+    }
+
+    .menu-card-content {
+        padding: 14px;
+    }
+
+    .menu-name {
+        font-size: 16px;
+    }
+
+    .menu-price {
+        font-size: 17px;
+    }
+}
+
+
+/* ==================================================
+   13. TAMPILAN RESPONSIF UNTUK HP
+   Aturan aktif pada layar 480px atau lebih kecil.
+================================================== */
+
+@media (max-width: 480px) {
+
+    /* Memperkecil margin kanan dan kiri */
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    /* Header lebih ringkas */
+    .header-content {
+        min-height: 68px;
+        gap: 10px;
+    }
+
+    .brand {
+        gap: 9px;
+    }
+
+    .brand-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+
+    .brand-text strong {
+        font-size: 17px;
+    }
+
+    .brand-text small {
+        font-size: 11px;
+    }
+
+    .header-label {
+        max-width: 110px;
+        font-size: 11px;
+    }
+
+    /* Judul sambutan pada HP */
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero h1 {
+        font-size: 31px;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-description {
+        margin-top: 14px;
+        font-size: 14px;
+    }
+
+    /* Bagian menu pada HP */
+    .menu-section {
+        padding: 34px 0 42px;
+    }
+
+    .section-heading {
+        margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .section-description {
+        font-size: 13px;
+    }
+
+    /* Input pencarian lebih ringkas */
+    .search-wrapper input {
+        min-height: 50px;
+        font-size: 14px;
+    }
+
+    /* Tombol kategori mudah disentuh */
+    .category-list {
+        gap: 8px;
+    }
+
+    .category-button {
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+
+    /* Kartu menu tetap rapi pada layar sempit */
+    .menu-grid {
+        grid-template-columns: repeat(
+            2,
+            minmax(0, 1fr)
+        );
+        gap: 10px;
+    }
+
+    .menu-card {
+        border-radius: 12px;
+    }
+
+    .menu-card-content {
+        padding: 10px;
+    }
+
+    .menu-name {
+        font-size: 14px;
+    }
+
+    .menu-description {
+        margin: 7px 0 12px;
+        font-size: 12px;
+    }
+
+    .menu-price {
+        font-size: 14px;
+    }
+
+    .menu-card-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .menu-status {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    /* Petunjuk pemesanan pada HP */
+    .order-content {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .order-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+    }
+
+    .order-content h2 {
+        font-size: 17px;
+    }
+
+    .order-content p {
+        font-size: 13px;
+    }
+
+    /* Footer disusun vertikal */
+    .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .footer-note {
+        text-align: left;
+    }
+}
+
+
+/* ==================================================
+   14. AKSESIBILITAS
+   Mengurangi animasi bagi pengguna yang memilih
+   pengurangan gerakan pada perangkatnya.
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
