@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Mengatur karakter agar mendukung huruf dan simbol Indonesia -->
+    <meta charset="UTF-8">
+
+    <!-- Membuat tampilan menyesuaikan ukuran layar HP dan laptop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul website yang tampil pada tab browser -->
+    <title>MenuKita | Menu Digital</title>
+
+    <!-- Deskripsi singkat website -->
+    <meta
+        name="description"
+        content="Menu digital makanan dan minuman yang praktis, sederhana, dan mudah digunakan."
+    >
+
+    <!-- Menghubungkan file desain CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Menghubungkan file JavaScript.
+         defer membuat JavaScript dijalankan setelah HTML selesai dibaca. -->
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =========================
+         BAGIAN HEADER
+         Berisi identitas kafe
+    ========================== -->
+    <header class="header">
+        <div class="container header-content">
+
+            <!-- Nama dan identitas website -->
+            <a href="#" class="brand" aria-label="MenuKita, kembali ke atas">
+                <span class="brand-icon" aria-hidden="true">🍽️</span>
+
+                <span class="brand-text">
+                    <strong id="nama-kafe">MenuKita</strong>
+                    <small>Menu Digital</small>
+                </span>
+            </a>
+
+            <!-- Informasi bahwa ini adalah katalog menu -->
+            <span class="header-label">
+                Menu Makanan & Minuman
+            </span>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         BAGIAN UTAMA WEBSITE
+    ========================== -->
+    <main>
+
+        <!-- Bagian sambutan atau pengenalan kafe -->
+        <section class="hero">
+            <div class="container hero-content">
+
+                <p class="hero-label">SELAMAT DATANG</p>
+
+                <h1>Temukan Menu Favoritmu</h1>
+
+                <p class="hero-description">
+                    Lihat pilihan makanan dan minuman kami dengan mudah.
+                    Pilih menu favoritmu dan pesan langsung kepada pelayan.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             BAGIAN PENCARIAN MENU
+        ========================== -->
+        <section class="menu-section" id="daftar-menu">
+            <div class="container">
+
+                <!-- Judul bagian menu -->
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">PILIHAN KAMI</p>
+                        <h2>Daftar Menu</h2>
+                        <p class="section-description">
+                            Temukan makanan atau minuman yang kamu inginkan.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- Kotak pencarian menu.
+                     JavaScript akan membaca teks yang dimasukkan. -->
+                <div class="search-wrapper">
+                    <label for="pencarian-menu" class="visually-hidden">
+                        Cari nama makanan atau minuman
+                    </label>
+
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+
+                    <input
+                        type="search"
+                        id="pencarian-menu"
+                        placeholder="Cari makanan atau minuman..."
+                        autocomplete="off"
+                    >
+                </div>
+
+
+                <!-- =========================
+                     FILTER KATEGORI
+                ========================== -->
+                <nav
+                    class="category-list"
+                    id="daftar-kategori"
+                    aria-label="Filter kategori menu"
+                >
+
+                    <!--
+                        Tombol kategori.
+                        Nilai data-kategori dibaca oleh JavaScript.
+                    -->
+                    <button
+                        type="button"
+                        class="category-button active"
+                        data-kategori="Semua"
+                        aria-pressed="true"
+                    >
+                        Semua Menu
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-button"
+                        data-kategori="Makanan"
+                        aria-pressed="false"
+                    >
+                        Makanan
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-button"
+                        data-kategori="Camilan"
+                        aria-pressed="false"
+                    >
+                        Camilan
+                    </button>
+
+                    <button
+                        type="button"
+                        class="category-button"
+                        data-kategori="Minuman"
+                        aria-pressed="false"
+                    >
+                        Minuman
+                    </button>
+
+                </nav>
+
+
+                <!-- =========================
+                     INFORMASI JUMLAH MENU
+                ========================== -->
+                <div class="menu-information">
+                    <p id="jumlah-menu" aria-live="polite">
+                        Memuat daftar menu...
+                    </p>
+                </div>
+
+
+                <!-- =========================
+                     DAFTAR KARTU MENU
+                ========================== -->
+                <!--
+                    JavaScript akan memasukkan kartu makanan
+                    ke dalam elemen ini berdasarkan data di script.js.
+                -->
+                <div
+                    class="menu-grid"
+                    id="menu-grid"
+                    aria-label="Daftar makanan dan minuman"
+                >
+                    <!-- Kartu menu dibuat otomatis oleh JavaScript -->
+                </div>
+
+
+                <!-- =========================
+                     PESAN JIKA MENU TIDAK ADA
+                ========================== -->
+                <!--
+                    Bagian ini ditampilkan jika pencarian tidak menemukan
+                    menu yang sesuai.
+                -->
+                <div
+                    class="empty-state"
+                    id="menu-kosong"
+                    hidden
+                >
+                    <span class="empty-icon" aria-hidden="true">🍽️</span>
+
+                    <h3>Menu tidak ditemukan</h3>
+
+                    <p>
+                        Coba gunakan kata kunci lain atau pilih kategori berbeda.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="reset-pencarian"
+                        class="reset-button"
+                    >
+                        Tampilkan Semua Menu
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             INFORMASI CARA MEMESAN
+        ========================== -->
+        <section class="order-information">
+            <div class="container order-content">
+
+                <span class="order-icon" aria-hidden="true">💬</span>
+
+                <div>
+                    <h2>Sudah Menemukan Pilihanmu?</h2>
+
+                    <p>
+                        Catat nama menu yang kamu inginkan, lalu sampaikan
+                        pesananmu langsung kepada pelayan.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         BAGIAN FOOTER
+    ========================== -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <p>
+                &copy; <span id="tahun-sekarang"></span>
+                <span id="nama-kafe-footer">MenuKita</span>.
+                Menu Digital.
+            </p>
+
+            <p class="footer-note">
+                Praktis, sederhana, dan mudah diakses.
+            </p>
+
+        </div>
+    </footer>
+
+
+    <!--
+        Catatan:
+        HTML ini tidak menggunakan database.
+        Data menu dan fungsi pencarian akan diatur melalui script.js.
+        Desain website diatur melalui style.css.
+    -->
+
+</body>
+</html>
